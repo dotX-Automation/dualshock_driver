@@ -1,7 +1,7 @@
-/joystick:
+/joystick/joystick_driver:
   ros__parameters:
     axis_deadzone_val: 300
     axis_max_val: 32767.0
     invert_y: true
-    joy_topic_name: /joystick
+    joy_topic_name: ~/cmd_joystick
     joy_path : /dev/input/js0

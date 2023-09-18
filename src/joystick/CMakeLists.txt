@@ -35,18 +35,18 @@ generate_init_parameters(
   YAML_FILE "${CMAKE_CURRENT_SOURCE_DIR}/src/joystick/params.yaml"
   OUT_FILE "init_parameters.cpp")
 
-add_executable(joystick
+add_executable(joystick_app
   src/joystick/joystick.cpp
   src/joystick/joystick_utils.cpp
   init_parameters.cpp
   src/joystick_app.cpp)
 
-target_include_directories(joystick PUBLIC
+target_include_directories(joystick_app PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
 
 ament_target_dependencies(
-  joystick
+  joystick_app
   dua_app_management
   dua_node
   dua_qos
@@ -56,7 +56,7 @@ ament_target_dependencies(
   rclcpp_components)
 
 # joystick app
-install(TARGETS joystick
+install(TARGETS joystick_app
   DESTINATION lib/${PROJECT_NAME})
 
 # Config files

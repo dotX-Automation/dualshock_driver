@@ -102,7 +102,6 @@ private:
   /* Joystick thread and routine */
   std::thread joy_thread_;
   void joy_routine();
-  void joy_routine_nx();
 
   /* Node init functions */
   void init_atomics();
@@ -111,8 +110,10 @@ private:
   void init_joystick();
 
   /* Internal state variables */
-  int js;
+  int js = -1;
   struct js_event event;
+  struct timeval timeout;
+
   joystick_msgs::msg::Joystick joy_msg;
   std::vector<int8_t*> buttons = {&joy_msg.cross,
                                   &joy_msg.circle,

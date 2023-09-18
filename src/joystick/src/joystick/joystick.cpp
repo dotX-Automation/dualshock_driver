@@ -35,7 +35,7 @@ namespace Joystick
  * @param node_opts Options for the base node.
  */
 JoystickNode::JoystickNode(const rclcpp::NodeOptions & node_options)
-: NodeBase("joystick", node_options, true)
+: NodeBase("joystick_driver", node_options, true)
 {
   // Initialize parameters
   init_parameters();
@@ -61,6 +61,9 @@ JoystickNode::~JoystickNode()
   stop_thread.store(true, std::memory_order_release);
   joy_thread_.join();
   RCLCPP_INFO(this->get_logger(), "Thread joined correctly");
+
+  // Close joystick device file
+  if (js != -1) close(js);
 }
 
 /**

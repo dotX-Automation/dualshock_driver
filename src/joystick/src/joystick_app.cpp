@@ -37,7 +37,7 @@ using namespace DUAAppManagement;
 
 int main(int argc, char ** argv)
 {
-  ROS2AppManager<rclcpp::executors::MultiThreadedExecutor,
+  ROS2AppManager<rclcpp::executors::SingleThreadedExecutor,
     Joystick::JoystickNode> app_manager(
     argc,
     argv,
@@ -50,10 +50,6 @@ int main(int argc, char ** argv)
     app_manager.get_executor());
   sig_handler.install(SIGINT);
   sig_handler.install(SIGTERM);
-  sig_handler.install(SIGQUIT);
-  sig_handler.ignore(SIGHUP);
-  sig_handler.ignore(SIGUSR1);
-  sig_handler.ignore(SIGUSR2);
 
   app_manager.run();
 
