@@ -1,6 +1,6 @@
-# ds4-joypad-driver
+# dualshock_driver
 
-ROS 2 driver for the DS4 controller.
+ROS 2 drivers for the Dualshock joypads.
 
 ## Contents
 
